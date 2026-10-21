@@ -102,5 +102,3 @@ Author
 Aleksander (@aleksandergrambelik-png)
 
 Built with too much coffee, from a phone.
-
-```
