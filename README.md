@@ -1,4 +1,4 @@
-# SanderMultiVector
+i# SanderMultiVector
 
 > Hybrid Multi-Vector Bug Bounty Arsenal for Termux and Linux.
 
@@ -73,20 +73,19 @@ Example JSONL output:
 
 SanderMultiVector was tested live on Termux (Android). The following screenshots show the tool in action, from the interactive menu to the JSONL audit log.
 
-### 1. Interactive Menu
+### 1.
 
 <img src="assets/poc_1.jpg" alt="Menu 1" width="600">
 
 <img src="assets/poc_2.jpg" alt="Menu 2" width="600">
 
-### 2. Real-time Audit Output
+### 2.
 
 <img src="assets/poc_3.jpg" alt="Audit 1" width="600">
 
 <img src="assets/poc_4.jpg" alt="Audit 2" width="600">
 
-### 3. JSONL Log File
-
+### 3.
 <img src="assets/poc_5.jpg" alt="JSONL 1" width="600">
 
 <img src="assets/poc_6.jpg" alt="JSONL 2" width="600">
