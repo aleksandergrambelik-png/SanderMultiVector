@@ -1,0 +1,5 @@
+build/
+bin/
+*.jar
+*.class
+*.jsonl
