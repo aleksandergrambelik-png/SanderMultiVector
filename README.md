@@ -71,21 +71,27 @@ Example JSONL output:
 ---
 ## Proof of Concept
 
-SanderMultiVector was tested live on Termux (Android). The following screenshots show the tool in action.
+SanderMultiVector was tested live on Termux (Android). The following screenshots show the tool in action, from the interactive menu to the JSONL audit log.
 
 ### 1. Interactive Menu
 
-<img src="assets/poc_menu.jpg" alt="Interactive Menu" width="600">
+<img src="assets/poc_1.jpg" alt="Menu 1" width="600">
+
+<img src="assets/poc_2.jpg" alt="Menu 2" width="600">
 
 ### 2. Real-time Audit Output
 
-<img src="assets/poc_report.jpg" alt="Audit Report" width="600">
+<img src="assets/poc_3.jpg" alt="Audit 1" width="600">
+
+<img src="assets/poc_4.jpg" alt="Audit 2" width="600">
 
 ### 3. JSONL Log File
 
-<img src="assets/poc_jsonl.jpg" alt="JSONL Log" width="600">
+<img src="assets/poc_5.jpg" alt="JSONL 1" width="600">
 
-> Note: Tested on `127.0.0.1` with a local dummy target.
+<img src="assets/poc_6.jpg" alt="JSONL 2" width="600">
+
+> Note: Tested on `127.0.0.1` with a local dummy target. IP addresses are partially redacted for ethical disclosure.
 
 Built By
 
