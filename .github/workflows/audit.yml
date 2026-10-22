@@ -35,15 +35,15 @@ jobs:
     - name: Compile Java Source
       run: |
         mkdir -p build
-        javac -d build $(find src -name "*.java") || echo "JAVAC FAILED"
+        javac -d build $(find src -name "*.java")
 
     - name: Compile C++ Fuzzer
       run: |
         mkdir -p bin
-        clang++ cpp/fuzzer.cpp -o bin/fuzzer_bin -lcurl -O3 -std=c++11 || echo "CLANG FAILED"
+        clang++ cpp/fuzzer.cpp -o bin/fuzzer_bin -lcurl -O3 -std=c++11
 
-- name: Verify Compilation
-  run: |
-    # Cuma ngecek apakah class Main ada, tanpa ngejalanin Scanner
-    ls -la build/com/sander/Main.class
-    echo "Compilation successful!"
+    - name: Verify Compilation (No Interactive Test)
+      run: |
+        echo "Checking compiled classes..."
+        ls -la build/com/sander/Main.class
+        echo "Compilation verified. SanderMultiVector is ready."
