@@ -2,6 +2,7 @@ i# SanderMultiVector
 
 > Hybrid Multi-Vector Bug Bounty Arsenal for Termux and Linux.
 
+![Audit Status](https://github.com/aleksandergrambelik-png/SanderMultiVector/actions/workflows/audit.yml/badge.svg)
 ![Java](https://img.shields.io/badge/Java-11+-orange)
 ![License](https://img.shields.io/badge/License-GPL--3.0-green)
 ![Platform](https://img.shields.io/badge/Platform-Termux%20%7C%20Linux%20%7C%20Windows%20%7C%20macOS-brightgreen)
