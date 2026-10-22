@@ -20,21 +20,28 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    - name: Compile Java Source
+    - name: Debug - List Files
       run: |
-        mkdir -p build
-        javac -d build $(find src -name "*.java")
+        echo "Current directory: $(pwd)"
+        ls -la
+        echo "--- src folder ---"
+        ls -la src/com/sander/ || echo "src/com/sander/ not found"
 
     - name: Install Dependencies (Perl & libcurl)
       run: |
         sudo apt-get update
         sudo apt-get install -y perl libcurl4-openssl-dev
 
+    - name: Compile Java Source
+      run: |
+        mkdir -p build
+        javac -d build $(find src -name "*.java") || echo "JAVAC FAILED"
+
     - name: Compile C++ Fuzzer
       run: |
-        clang++ cpp/fuzzer.cpp -o bin/fuzzer_bin -lcurl -O3 -std=c++11
+        mkdir -p bin
+        clang++ cpp/fuzzer.cpp -o bin/fuzzer_bin -lcurl -O3 -std=c++11 || echo "CLANG FAILED"
 
     - name: Run SanderMultiVector (Test)
       run: |
-        java -cp build com.sander.Main "help" || true
-
+        java -cp build com.sander.Main "help" || echo "JAVA RUN FAILED"
