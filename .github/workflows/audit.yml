@@ -1,0 +1,55 @@
+name: SanderMultiVector Audit
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Install Dependencies (Perl, g++, libcurl)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y perl g++ libcurl4-openssl-dev
+
+      - name: Compile SanderMultiVector
+        run: |
+          mkdir -p build
+          javac -d build src/com/sander/*.java
+          g++ cpp/fuzzer.cpp -o bin/fuzzer_bin -lcurl -O3 -std=c++11
+          jar cvfe SanderGenesisMulti.jar com.sander.Main -C build .
+
+      - name: Setup Mock Target (Python HTTP Server)
+        run: |
+          python3 -m http.server 8080 &
+          sleep 2
+
+      - name: Run SQLi Test (Mock)
+        run: |
+          java -jar SanderGenesisMulti.jar sqli "http://127.0.0.1:8080/?q=" || true
+
+      - name: Parse Audit Log with jq
+        run: |
+          echo "=== AUDIT LOG ==="
+          if [ -f sander_genesis_audit.jsonl ]; then
+            cat sander_genesis_audit.jsonl | jq .
+          else
+            echo "No audit log found."
+          fi
+
+      - name: Upload Audit Log Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit-log
+          path: sander_genesis_audit.jsonl
